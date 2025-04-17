@@ -1,9 +1,6 @@
-theme = "base16_default"
+theme = "gruvbox_light_soft"
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
-
-[editor.file-picker]
-hidden = true
