@@ -1,0 +1,33 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "telemetry": {
+    "metrics": true,
+    "diagnostics": true
+  },
+
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+
+  "restore_on_startup": "none",
+
+  // windows
+  "ui_font_size": 15.5,
+  "buffer_font_size": 15,
+
+  "inlay_hints": {
+    "enabled": false
+  },
+
+  "theme": {
+    "mode": "light",
+    "light": "Ayu Light",
+    "dark": "Ayu Mirage"
+  }
+}
