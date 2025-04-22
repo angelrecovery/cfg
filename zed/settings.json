@@ -14,6 +14,11 @@
     "env": true,
     "zig": true,
     "lua": true,
+    "sql": true,
+    "ini": true,
+    "make": true,
+    "fish": true,
+    "swift": true,
     "dockerfile": true
   },
   "calls": {
