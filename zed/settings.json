@@ -16,6 +16,9 @@
     "lua": true,
     "dockerfile": true
   },
+  "calls": {
+    "mute_on_join": true
+  },
 
   "restore_on_startup": "none",
 
