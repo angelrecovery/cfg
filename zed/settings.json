@@ -19,11 +19,14 @@
   "calls": {
     "mute_on_join": true
   },
+  "vim_mode": true,
+  "vim": {
+    "default_mode": "helix_normal"
+  },
 
   "restore_on_startup": "none",
 
   "base_keymap": "VSCode",
-  "vim_mode": true,
 
   "middle_click_paste": false,
 
