@@ -4,11 +4,12 @@
     "diagnostics": true
   },
   "theme": {
-    "mode": "light",
-    "light": "Ayu Light",
-    "dark": "Ayu Mirage"
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
   },
   "auto_install_extensions": {
+    "catppuccin": true,
     "toml": true,
     "html": true,
     "env": true,
