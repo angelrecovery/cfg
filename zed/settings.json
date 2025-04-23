@@ -23,14 +23,19 @@
     "gitignore": true,
     "dockerfile": true
   },
+  "languages": {
+    "Zig": {
+      "format_on_save": "off"
+    }
+  },
   "calls": {
     "mute_on_join": true
   },
-  "base_keymap": "VSCode",
-  "vim_mode": true,
   "vim": {
     "default_mode": "helix_normal"
   },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
   "restore_on_startup": "none",
   "middle_click_paste": false,
   "ui_font_size": 15.5,
