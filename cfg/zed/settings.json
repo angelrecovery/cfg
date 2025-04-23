@@ -25,6 +25,7 @@
     "catppuccin": true,
     "toml": true,
     "html": true,
+    "svelte": true,
     "env": true,
     "zig": true,
     "lua": true,
