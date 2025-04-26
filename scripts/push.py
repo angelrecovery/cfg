@@ -1,8 +1,5 @@
-import util
-import shutil
+from manager import ConfigManager
 
-for directory in util.directories():
-    print(f"(cfg) Pushing to {directory}...")
-    shutil.copytree(directory, "cfg", dirs_exist_ok=True)
-
-print("(cfg) Done!")
+cm = ConfigManager()
+cm.collect()
+cm.push()
