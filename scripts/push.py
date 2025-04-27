@@ -1,5 +1,4 @@
-from manager import ConfigManager
+from manager import Sync
 
-cm = ConfigManager()
-cm.collect()
-cm.push()
+sync = Sync()
+sync.push()
