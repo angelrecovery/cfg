@@ -13,3 +13,5 @@ size = 12.5
 [selection]
 save_to_clipboard = true
 
+[mouse]
+hide_when_typing = true
