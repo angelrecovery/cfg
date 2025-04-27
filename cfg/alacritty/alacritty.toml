@@ -8,6 +8,3 @@ padding = { x = 3, y = 3 }
 
 [font]
 size = 12.5
-
-normal = { family = "Inconsolata", style = "Regular" }
-bold = { family = "Inconsolata", style = "Bold" }
