@@ -5,4 +5,4 @@ Configuration files for various tools.
 `root` - Dotfiles and settings
 
 
-`sync` - Code for managing settings between systems
+`sync` - Code for managing stuff inside `root` between systems
