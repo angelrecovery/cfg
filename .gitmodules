@@ -1,3 +1,3 @@
-[submodule "alacritty/alacritty-theme"]
-	path = alacritty/alacritty-theme
+[submodule "cfg/alacritty/alacritty-theme"]
+	path = cfg/alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme
