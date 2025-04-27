@@ -1,4 +1,4 @@
-from manager import Sync
+from sync import Sync
 
 sync = Sync()
 sync.pull()
