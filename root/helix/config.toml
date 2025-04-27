@@ -1,4 +1,5 @@
-theme = "catppuccin_macchiato"
+theme = "everforest_dark"
+# theme = "catppuccin_macchiato"
 # theme = "catppuccin_latte"
 
 [editor.cursor-shape]

@@ -1,7 +1,7 @@
 set shell := ["nu", "-c"]
 
 pull:
-    @python ./sync/pull.py
+    @uv run ./sync/pull.py
 
 push:
-    @python ./sync/push.py
+    @uv run ./sync/push.py
