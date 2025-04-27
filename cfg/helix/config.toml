@@ -1,4 +1,5 @@
-theme = "ayu_light"
+theme = "catppuccin_macchiato"
+# theme = "catppuccin_latte"
 
 [editor.cursor-shape]
 insert = "bar"
