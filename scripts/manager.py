@@ -30,19 +30,24 @@ class Config:
             print(f"(cfg) Failed to pull '{self.name}' configuration from '{src}': {e}")
 
 class ConfigManager:
+    configs: List[Config]
+    
     def __init__(self):
-        self.configs: List[Config] = []
+        self.configs = []
 
     def collect(self) -> None:
         self.configs = [
             Config(path.name, path) for path in Path("cfg").iterdir() if path.is_dir()]
 
+    def _confirm(self, action: str) -> bool:
+        return input(f"(cfg) Type 'y' to confirm action: \'{action}\': ").lower().startswith("y")
+
     def push(self) -> None:
-        if not input("(cfg) Type 'y' to confirm push: ").lower().startswith("y"): return
+        if not self._confirm("push"): return
         for config in self.configs:
             config.push()
 
     def pull(self) -> None:
-        if not input("(cfg) Type 'y' to confirm pull: ").lower().startswith("y"): return
+        if not self._confirm("pull"): return
         for config in self.configs:
             config.pull()
