@@ -1,4 +1,4 @@
-set shell := ["powershell", "-c"]
+set shell := ["nu", "-c"]
 
 pull:
     @python ./scripts/pull.py
