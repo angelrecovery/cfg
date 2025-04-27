@@ -2,6 +2,7 @@
 
 Configuration files for various tools.
 
-`root` - Actual configs and settings files
+`root` - Dotfiles and settings
 
-`sync` - Python code for managing settings between systems
+
+`sync` - Code for managing settings between systems
