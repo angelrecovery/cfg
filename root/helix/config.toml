@@ -1,6 +1,4 @@
-theme = "everforest_dark"
-# theme = "catppuccin_macchiato"
-# theme = "catppuccin_latte"
+theme = "base16_terminal"
 
 [editor.cursor-shape]
 insert = "bar"
