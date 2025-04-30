@@ -7,7 +7,8 @@ import = [
 padding = { x = 3, y = 3 }
 
 [font]
-size = 12.5
+size = 12.75
+normal = { family = "Noto Sans Mono" }
 
 [selection]
 save_to_clipboard = true
