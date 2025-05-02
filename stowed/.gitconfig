@@ -1,0 +1,18 @@
+[core]
+	editor = hx
+[alias]
+	s = status -sb
+	sw = switch
+	b = branch
+	c = commit -v
+	a = add
+	re = restore
+	l = pull
+	p = push
+	f = fetch
+	mt = mergetool
+	m = merge
+	r = rebase
+	lg = log --stat
+	d = diff
+	dt = difftool
