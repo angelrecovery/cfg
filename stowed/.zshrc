@@ -12,3 +12,5 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='hx'
 fi
+
+source <(fzf --zsh)
