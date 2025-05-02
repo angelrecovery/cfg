@@ -1,5 +1,12 @@
 [core]
 	editor = hx
+  	excludesfile = ~/.gitignore
+[branch]
+	autosetuprebase = always
+[help]
+	autocorrect = 1
+[init]
+	defaultBranch = main
 [alias]
 	s = status -sb
 	sw = switch
