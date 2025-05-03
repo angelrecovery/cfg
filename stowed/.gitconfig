@@ -1,6 +1,7 @@
 [core]
 	editor = hx
   	excludesfile = ~/.gitignore
+  	excludesfile = ~/.gitexcludes
 [branch]
 	autosetuprebase = always
 [help]
