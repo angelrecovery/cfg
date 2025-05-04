@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -6,7 +7,11 @@ export RUST_LOG=info
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh) # fzf keybinds
@@ -20,3 +25,5 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='hx'
 fi
+
+cd $HOME
