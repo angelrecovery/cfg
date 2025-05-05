@@ -22,13 +22,14 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-alias cat='bat --style=plain'
-
 source $ZSH/oh-my-zsh.sh
+source .keys
 source <(fzf --zsh) # fzf keybinds
 
 # rebind fzf ctrl-t to ctrl-f
 bindkey -r '^T'
 bindkey '^F' fzf-file-widget
+
+alias cat="bat --style=plain"
 
 cd $HOME
