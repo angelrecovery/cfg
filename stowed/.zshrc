@@ -23,7 +23,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source .keys
+source .keychain
 source <(fzf --zsh) # fzf keybinds
 
 # rebind fzf ctrl-t to ctrl-f
