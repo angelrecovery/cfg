@@ -24,9 +24,6 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-# fzf keybinds
-source <(fzf --zsh)
-
 # Theme for fzf - https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
@@ -44,6 +41,8 @@ bindkey -r '^T' && bindkey '^F' fzf-file-widget
 alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
 
+# https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
+source <(fzf --zsh)
 # https://github.com/starship/starship?tab=readme-ov-file#step-2-set-up-your-shell-to-use-starship
 eval "$(starship init zsh)"
 # https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation
