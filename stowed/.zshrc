@@ -46,5 +46,6 @@ alias cat="bat --style=plain --theme=base16 --color=always"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
 
 cd $HOME
