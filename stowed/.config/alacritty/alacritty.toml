@@ -1,14 +1,14 @@
 [general]
 import = [
-    "alacritty-theme/themes/base16_default_dark.toml",
+    "alacritty-theme/themes/catppuccin_mocha.toml",
 ]
 
 [window]
 padding = { x = 3, y = 3 }
 
 [font]
-size = 12.75
-normal = { family = "Noto Sans Mono" }
+size = 12
+normal = { family = "FiraMono Nerd Font Mono" }
 
 [selection]
 save_to_clipboard = true
