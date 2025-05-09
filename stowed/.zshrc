@@ -8,6 +8,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# rust `env_logger` crate
 export RUST_LOG=info
 
 # Editor
@@ -32,14 +33,12 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
 
-# Accept autosuggestions with tab
-bindkey '^I' autosuggest-accept 
-# Rebind fzf `Ctrl-T` to `Ctrl-F`
-bindkey -r '^T' && bindkey '^F' fzf-file-widget
-
 # Alternatives for coreutils stuff
 alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
+
+# Other aliases
+alias mca="macchina"
 
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
 source <(fzf --zsh)
@@ -49,5 +48,10 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 # https://docs.atuin.sh/guide/installation/#installing-the-shell-plugin
 eval "$(atuin init zsh)"
+
+# Accept autosuggestions with tab
+bindkey '^I' autosuggest-accept 
+# Rebind fzf `Ctrl-T` to `Ctrl-F`
+bindkey -r '^T' && bindkey '^F' fzf-file-widget
 
 cd $HOME
