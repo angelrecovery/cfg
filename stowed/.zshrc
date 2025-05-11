@@ -38,7 +38,7 @@ alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
 
 # Other aliases
-alias mca="macchina"
+alias ff="fastfetch"
 
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
 source <(fzf --zsh)
