@@ -1,5 +1,5 @@
 [core]
-	editor = hx
+	editor = nvim
   	excludesfile = ~/.gitexcludes
 [branch]
 	autosetuprebase = always
@@ -8,10 +8,10 @@
 [init]
 	defaultBranch = main
 [alias]
-	s = status -sb
+	st = status
 	sw = switch
-	b = branch
 	c = commit -v
+	b = branch
 	a = add
 	re = restore
 	l = pull

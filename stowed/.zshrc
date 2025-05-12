@@ -15,7 +15,7 @@ export RUST_LOG=info
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='hx'
+  export EDITOR='nvim'
 fi
 
 plugins=(
