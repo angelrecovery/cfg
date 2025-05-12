@@ -21,18 +21,17 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 vim.opt.clipboard = 'unnamedplus'
 
--- clear highlights on search when pressing <Esc> in normal mode
+-- Clear search highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
--- diagnostic keymaps
+-- Diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- keybinds to make split navigation easier.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- bootstrap lazy
+-- Bootstrap lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -43,9 +42,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- lazy plugins
+-- Plugins
 require('lazy').setup({
-  { -- colorscheme
+  { -- Colors
     'catppuccin/nvim',
     priority = 1000,
     config = function()
@@ -53,35 +52,35 @@ require('lazy').setup({
     end,
   },
 
-  'tpope/vim-sleuth', -- detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  { -- mini
+  {
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
 
-      -- auto surround
+      -- Auto surround
       require('mini.surround').setup()
 
-      -- auto pairs
+      -- Auto pairs
       require('mini.pairs').setup()
 
-      -- statusline
+      -- Status line
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      -- make the statusline cursor position display as line:column
+      -- Make the statusline cursor position display as line:column
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'
       end
 
-      -- start screen
+      -- Start screen
       require('mini.starter').setup()
     end,
   },
 
-  { -- noice
+  {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {},
@@ -91,7 +90,7 @@ require('lazy').setup({
     },
   },
 
-  { -- adds git related signs to the gutter, as well as utilities for managing changes
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -104,12 +103,10 @@ require('lazy').setup({
     },
   },
 
-  { -- shows you pending keybinds
+  {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
-      -- delay between pressing a key and opening which-key (milliseconds)
-      -- this setting is independent of vim.opt.timeoutlen
       delay = 0,
       icons = {
         mappings = vim.g.have_nerd_font,
@@ -152,7 +149,7 @@ require('lazy').setup({
     },
   },
 
-  { -- fzf
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
@@ -212,7 +209,7 @@ require('lazy').setup({
     end,
   },
 
-  -- lsp plugins
+  -- LSP stuff
   {
     'folke/lazydev.nvim',
     ft = 'lua',
@@ -262,7 +259,6 @@ require('lazy').setup({
           -- jump to the type of the word under your cursor
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-          -- this function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
           ---@param bufnr? integer some lsp support methods only in specific files
@@ -369,7 +365,7 @@ require('lazy').setup({
     end,
   },
 
-  { -- auto formatting.
+  { -- Auto formatting
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
@@ -402,12 +398,11 @@ require('lazy').setup({
     },
   },
 
-  { -- auto completion
+  { -- Auto completion
     'saghen/blink.cmp',
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
-      -- snippets
       {
         'L3MON4D3/LuaSnip',
         version = '2.*',
@@ -452,10 +447,10 @@ require('lazy').setup({
     },
   },
 
-  -- highlight todo, notes, etc in comments
+  -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  { -- treesitter
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
@@ -469,7 +464,7 @@ require('lazy').setup({
     },
   },
 
-  { -- rustacean
+  {
     'mrcjkb/rustaceanvim',
     version = '^6',
     lazy = false,

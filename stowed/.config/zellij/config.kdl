@@ -202,24 +202,26 @@ keybinds {
         bind "Ctrl b" { SwitchToMode "Tmux"; }
     }
 }
+
 ui {
     pane_frames {
 	rounded_corners false
     }
 }
+
 plugins {
     session-manager location="zellij:session-manager"
     plugin-manager location="zellij:plugin-manager"
     configuration location="zellij:configuration"
 }
+
 simplified_ui true
 pane_frames false
 
 session_serialization false
 
-default_layout "compact"
-
 show_release_notes false
 show_startup_tips false
 
+default_layout "compact"
 theme "catppuccin-macchiato"
