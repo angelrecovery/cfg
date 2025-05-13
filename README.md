@@ -1,4 +1,4 @@
-# dotfiles
+# lily's dotfiles
 
 My dotfiles for *nix environments, managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
