@@ -1,5 +1,5 @@
 # dotfiles
 
-My dotfiles for *nix environments.
+My dotfiles for *nix environments, managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
-These are designed primarily for use on macOS, but I also use Arch sometimes so stuff *should* work there just fine also.
+These are used primarily on macOS, but should also work anywhere else just fine.
