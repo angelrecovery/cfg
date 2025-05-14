@@ -24,7 +24,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Clear search highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostics
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -37,7 +37,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
   if vim.v.shell_error ~= 0 then
-    error('error cloning lazy.nvim:\n' .. out)
+    error('Error cloning lazy.nvim:\n' .. out)
   end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
@@ -142,9 +142,9 @@ require('lazy').setup({
         },
       },
       spec = {
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>s', group = 'Search' },
+        { '<leader>t', group = 'Toggle' },
+        { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -178,34 +178,34 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'ui-select')
 
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search help' })
+      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search keymap' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search files' })
+      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search select telescope' })
+      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current word' })
+      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by grep' })
+      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search diagnostics' })
+      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search resume' })
+      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search recent files ("." for repeat)' })
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
 
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      end, { desc = 'Fuzzy search in current buffer' })
 
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
           grep_open_files = true,
-          prompt_title = 'Live Grep in Open Files',
+          prompt_title = 'Live grep in open files',
         }
-      end, { desc = '[S]earch [/] in Open Files' })
+      end, { desc = 'Search in open files' })
 
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      end, { desc = 'Search neovim files' })
     end,
   },
 
@@ -233,31 +233,31 @@ require('lazy').setup({
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+        group = vim.api.nvim_create_augroup('lily-lsp-attach', { clear = true }),
         callback = function(event)
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          -- rename the variable under cursor
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-          -- execute code action
-          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-          -- find references for the word under cursor
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          -- jump to the implementation of the word under cursor
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          -- jump to the definition of the word under cursor
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          -- jump to the declaration of the word under cursor
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          -- fuzzy find all the symbols in current document
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-          -- fuzzy find all the symbols in current workspace
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-          -- jump to the type of the word under your cursor
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+          -- Rename the variable under cursor
+          map('grn', vim.lsp.buf.rename, 'Rename')
+          -- Execute code action
+          map('gra', vim.lsp.buf.code_action, 'Goto code action', { 'n', 'x' })
+          -- Find references for the word under cursor
+          map('grr', require('telescope.builtin').lsp_references, 'Goto references')
+          -- Jump to the implementation of the word under cursor
+          map('gri', require('telescope.builtin').lsp_implementations, 'Goto implementation')
+          -- Jump to the definition of the word under cursor
+          map('grd', require('telescope.builtin').lsp_definitions, 'Goto definition')
+          -- Jump to the declaration of the word under cursor
+          map('grD', vim.lsp.buf.declaration, 'Goto declaration')
+          -- Fuzzy find all the symbols in current document
+          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open document symbols')
+          -- Fuzzy find all the symbols in current workspace
+          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open workspace symbols')
+          -- Jump to the type of the word under your cursor
+          map('grt', require('telescope.builtin').lsp_type_definitions, 'Goto type definition')
 
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -273,7 +273,7 @@ require('lazy').setup({
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup('lily-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -287,10 +287,10 @@ require('lazy').setup({
             })
 
             vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+              group = vim.api.nvim_create_augroup('lily-lsp-detach', { clear = true }),
               callback = function(event2)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                vim.api.nvim_clear_autocmds { group = 'lily-lsp-highlight', buffer = event2.buf }
               end,
             })
           end
@@ -298,7 +298,7 @@ require('lazy').setup({
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
+            end, 'Toggle inlay hints')
           end
         end,
       })
@@ -347,12 +347,17 @@ require('lazy').setup({
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'rust-analyzer',
+        'zls',
+        'ruff',
+        'clangd',
         'stylua',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         ensure_installed = {},
+        automatic_enable = true,
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -376,11 +381,11 @@ require('lazy').setup({
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = 'Format buffer',
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true, zig = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -394,6 +399,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        rust = { 'rustfmt', lsp_format = 'fallback' },
+        python = { 'ruff' },
       },
     },
   },
