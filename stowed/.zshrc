@@ -42,6 +42,7 @@ alias cat="bat --style=plain --theme=base16 --color=always"
 
 # Other aliases
 alias ff="fastfetch"
+alias tk="tokei"
 
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
 source <(fzf --zsh)
