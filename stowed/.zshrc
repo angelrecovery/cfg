@@ -44,6 +44,7 @@ alias cat="bat --style=plain --theme=base16 --color=always"
 alias cl="clear"
 alias ff="fastfetch"
 alias tk="tokei"
+alias speed="speedtest-cli"
 
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
 source <(fzf --zsh)
