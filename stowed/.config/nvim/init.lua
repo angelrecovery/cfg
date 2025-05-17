@@ -518,7 +518,7 @@ require('lazy').setup({
 
       snippets = { preset = 'luasnip' },
 
-      fuzzy = { implementation = 'lua' },
+      fuzzy = { implementation = 'rust' },
 
       signature = { enabled = true },
     },
