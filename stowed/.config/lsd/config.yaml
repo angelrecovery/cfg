@@ -1,0 +1,9 @@
+color:
+  when: always
+  theme: default
+
+icons:
+  when: always
+  theme: fancy
+
+hyperlink: always
