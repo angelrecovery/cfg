@@ -36,11 +36,11 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
 
-# Alternatives for coreutils stuff
+# Aliases for coreutils alternatives
 alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
 
-# Other aliases
+# Miscellaneous aliases
 alias cl="clear"
 alias ff="fastfetch"
 alias tk="tokei"
