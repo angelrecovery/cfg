@@ -26,7 +26,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Source private stuff
-source .keychain
+source $HOME/.keychain
 
 # Theme for fzf - https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
 export FZF_DEFAULT_OPTS=" \
