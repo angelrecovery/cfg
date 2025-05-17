@@ -40,6 +40,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
+-- Window focus
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
@@ -56,10 +57,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Plugins
 require('lazy').setup({
   { -- Colors
     'catppuccin/nvim',
+  { -- Colorscheme
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'catppuccin'
@@ -68,6 +69,7 @@ require('lazy').setup({
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
+  -- Devicons
   {
   { -- AI
     'yetone/avante.nvim',
@@ -135,6 +137,8 @@ require('lazy').setup({
       },
     },
   },
+
+  { -- Mini
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
@@ -157,7 +161,7 @@ require('lazy').setup({
     end,
   },
 
-  {
+  { -- Noice
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {},
@@ -167,7 +171,7 @@ require('lazy').setup({
     },
   },
 
-  {
+  { -- Git stuff in gutter
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -208,7 +212,7 @@ require('lazy').setup({
     },
   },
 
-  {
+  { -- Telescope
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
@@ -479,7 +483,7 @@ require('lazy').setup({
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
-      {
+      { -- Snippet Engine
         'L3MON4D3/LuaSnip',
         version = '2.*',
         build = (function()
@@ -527,7 +531,7 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  {
+  { -- Treesitter
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
