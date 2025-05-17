@@ -154,9 +154,6 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%2l:%-2v'
       end
-
-      -- Start screen
-      require('mini.starter').setup()
     end,
   },
 
