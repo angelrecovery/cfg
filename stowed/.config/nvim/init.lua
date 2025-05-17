@@ -500,7 +500,8 @@ require('lazy').setup({
     --- @type blink.cmp.Config
     opts = {
       keymap = {
-        preset = 'default',
+        -- Accept completions with tab
+        preset = 'super-tab',
       },
 
       appearance = {
