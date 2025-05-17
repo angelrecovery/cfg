@@ -526,7 +526,18 @@ require('lazy').setup({
       },
 
       completion = {
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        accept = { auto_brackets = { enabled = true } },
+
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+          treesitter_highlighting = true,
+          window = { border = 'padded' },
+        },
+
+        menu = {
+          border = 'padded',
+        },
       },
 
       sources = {
