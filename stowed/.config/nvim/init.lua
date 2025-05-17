@@ -58,9 +58,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { -- Colorscheme
+    'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      local onedark = require 'onedark'
+
+      onedark.setup {
+        style = 'warmer',
+      }
+
+      -- Enable theme
+      onedark.load()
     end,
   },
 
