@@ -183,48 +183,30 @@ require('lazy').setup({
     },
   },
 
-  {
+  { -- which-key
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
       delay = 0,
-      icons = {
-        mappings = vim.g.have_nerd_font,
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
-      },
       spec = {
+        -- Groups
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
-        { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+        { '<leader>a', group = 'AI' },
+        -- AI (Avante)
+        { '<leader>aa', group = 'Ask' },
+        { '<leader>aB', group = 'Add current buffers' },
+        { '<leader>aB', group = 'Add all open buffers' },
+        { '<leader>ad', group = 'Toggle debug' },
+        { '<leader>af', group = 'Focus' },
+        { '<leader>ah', group = 'Select history' },
+        { '<leader>an', group = 'Create new ask' },
+        { '<leader>ar', group = 'Refresh' },
+        { '<leader>aR', group = 'Display repo map' },
+        { '<leader>as', group = 'Toggle suggestions' },
+        { '<leader>aS', group = 'Stop' },
+        { '<leader>at', group = 'Toggle' },
+        { '<leader>a?', group = 'Select model' },
       },
     },
   },
@@ -289,8 +271,7 @@ require('lazy').setup({
     end,
   },
 
-  -- LSP stuff
-  {
+  { -- lazydev.nvim
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
@@ -300,7 +281,8 @@ require('lazy').setup({
       },
     },
   },
-  {
+
+  { -- LSP configurations
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', opts = {} },
@@ -385,7 +367,7 @@ require('lazy').setup({
 
       vim.diagnostic.config {
         severity_sort = true,
-        float = { border = 'rounded', source = 'if_many' },
+        float = { border = 'padded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
         signs = vim.g.have_nerd_font and {
           text = {
@@ -412,9 +394,26 @@ require('lazy').setup({
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local servers = {
+      local enabled_servers = {
+        rust_analyzer = {},
+        zls = {},
+        clangd = {},
+        ruff = {},
+        gopls = {},
+        ts_ls = {},
+        jsonls = {},
+        yamlls = {},
+        cssls = {},
+        html = {},
+        htmx = {},
+        --sqlls = {},
+        postgrestools = {},
+        asm_lsp = {},
+        dockerls = {},
+        just = {},
+        cmake = {},
+        stylua = {},
         lua_ls = {
-
           settings = {
             Lua = {
               completion = {
@@ -424,15 +423,8 @@ require('lazy').setup({
           },
         },
       }
+      local ensure_installed = vim.tbl_keys(enabled_servers or {})
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'rust-analyzer',
-        'zls',
-        'ruff',
-        'clangd',
-        'stylua',
-      })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
@@ -441,7 +433,7 @@ require('lazy').setup({
         automatic_installation = false,
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
+            local server = enabled_servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
@@ -467,7 +459,7 @@ require('lazy').setup({
     opts = {
       notify_on_error = true,
       format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true, zig = true }
+        local disable_filetypes = {}
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -479,7 +471,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        rust = { 'rustfmt', lsp_format = 'fallback' },
+        rust = { 'rustfmt' },
         python = { 'ruff' },
       },
     },
