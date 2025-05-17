@@ -71,6 +71,10 @@ require('lazy').setup({
 
   -- Devicons
   {
+
+  -- View startup time
+  'dstein64/vim-startuptime',
+
   { -- AI
     'yetone/avante.nvim',
     event = 'VeryLazy',
