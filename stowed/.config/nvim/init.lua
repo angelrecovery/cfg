@@ -69,6 +69,72 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   {
+  { -- AI
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false,
+    opts = {
+      provider = 'claude',
+      gemini = {
+        model = 'gemini-2.5-flash-preview-04-17',
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 4096,
+      },
+      claude = {
+        model = 'claude-3-5-haiku-latest',
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 4096,
+      },
+      openai = {
+        model = 'o4-mini',
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 4096,
+      },
+      web_search_engine = {
+        provider = 'tavily',
+      },
+      windows = {
+        width = 25, -- % of the screen width
+      },
+      mappings = {},
+    },
+    build = 'make',
+    dependencies = {
+      -- Required
+      'nvim-treesitter/nvim-treesitter',
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      -- Optional
+      'nvim-telescope/telescope.nvim',
+      'hrsh7th/nvim-cmp',
+      'nvim-tree/nvim-web-devicons',
+      { -- Support for image pasting
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
+        },
+      },
+      { -- Markdown rendering for chats
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { 'markdown', 'Avante' },
+        },
+        ft = { 'markdown', 'Avante' },
+      },
+    },
+  },
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
