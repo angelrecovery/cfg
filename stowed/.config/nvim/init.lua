@@ -153,11 +153,19 @@ require('lazy').setup({
       -- Auto pairs
       require('mini.pairs').setup()
 
-      -- Status line
+      -- Auto comments
+      require('mini.comment').setup {
+        -- Comment with Ctrl-C
+        mappings = {
+          comment = '<C-c>',
+          comment_line = '<C-c>',
+          comment_visual = '<C-c>',
+        },
+      }
+
+      -- Statusline
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- Make the statusline cursor position display as line:column
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'
