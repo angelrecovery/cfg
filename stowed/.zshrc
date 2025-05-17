@@ -28,13 +28,13 @@ source $ZSH/oh-my-zsh.sh
 # Source private stuff
 source $HOME/.keychain
 
-# Theme for fzf - https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
+# Theme for fzf (onedark)
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --pointer="❯"
+  --color=fg:#abb2bf,bg:#282c34,hl:#61afef
+  --color=fg+:#e5c07b,bg+:#3e4451,hl+:#528bff
+  --color=info:#56b6c2,prompt:#c678dd,pointer:#98c379
+  --color=marker:#e06c75,spinner:#61afef,header:#61afef'
 
 # Aliases for coreutils alternatives
 alias ls="lsd"
