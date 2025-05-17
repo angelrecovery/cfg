@@ -38,8 +38,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Clear search highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostics
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
-
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Quickfix list' })
 -- Window focus
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -58,8 +57,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { -- Colors
-    'catppuccin/nvim',
   { -- Colorscheme
     priority = 1000,
     config = function()
@@ -67,13 +64,20 @@ require('lazy').setup({
     end,
   },
 
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- Devicons
   {
+    'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').setup()
+    end,
+  },
 
   -- View startup time
   'dstein64/vim-startuptime',
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
 
   { -- AI
     'yetone/avante.nvim',
