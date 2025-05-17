@@ -41,6 +41,7 @@ alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
 
 # Other aliases
+alias cl="clear"
 alias ff="fastfetch"
 alias tk="tokei"
 
