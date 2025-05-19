@@ -38,6 +38,25 @@ require('lazy').setup({
     end,
   },
 
+  { -- Bufferline
+    'akinsho/bufferline.nvim',
+    version = '*',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      -- Cycle through tabs
+      vim.keymap.set('n', '<C-L>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+      vim.keymap.set('n', '<C-h>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+      -- Remove the background color match
+      local bg_color = string.format('#%06x', vim.api.nvim_get_hl(0, { name = 'Normal' }).bg)
+      require('bufferline').setup {
+        highlights = {
+          fill = {
+            bg = bg_color,
+          },
+        },
+      }
+    end,
+  },
 
   { -- Devicons
     'nvim-tree/nvim-web-devicons',
