@@ -38,12 +38,6 @@ require('lazy').setup({
     end,
   },
 
-  { -- Scrollbar
-    'petertriho/nvim-scrollbar',
-    config = function()
-      require('scrollbar').setup()
-    end,
-  },
 
   { -- Devicons
     'nvim-tree/nvim-web-devicons',
