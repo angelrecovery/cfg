@@ -30,7 +30,7 @@ require('lazy').setup({
       local onedark = require 'onedark'
 
       onedark.setup {
-        style = 'warmer',
+        style = 'dark',
       }
 
       -- Enable theme
