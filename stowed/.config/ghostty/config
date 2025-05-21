@@ -1,0 +1,7 @@
+theme = onedark
+window-decoration = true
+
+font-family = JetBrainsMono NF
+font-size = 11
+
+mouse-hide-while-typing = true
