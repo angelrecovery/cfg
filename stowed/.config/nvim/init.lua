@@ -5,11 +5,6 @@ require 'opts'
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Quickfix list' })
--- Window focus
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Bootstrap lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -43,13 +38,20 @@ require('lazy').setup({
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      -- Cycle through tabs
-      vim.keymap.set('n', '<C-L>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+      -- Keybindings for cycling tabs
+      vim.keymap.set('n', '<C-l>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
       vim.keymap.set('n', '<C-h>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
-      -- Remove the background color match
+
       local bg_color = string.format('#%06x', vim.api.nvim_get_hl(0, { name = 'Normal' }).bg)
       require('bufferline').setup {
+        options = {
+          always_show_bufferline = false,
+          diagnostics = 'nvim_lsp',
+          color_icons = true,
+          separator_style = '',
+        },
         highlights = {
+          -- Make the background color match
           fill = {
             bg = bg_color,
           },
@@ -57,6 +59,9 @@ require('lazy').setup({
       }
     end,
   },
+
+  -- Snippets
+  { 'rafamadriz/friendly-snippets' },
 
   { -- Devicons
     'nvim-tree/nvim-web-devicons',
@@ -159,13 +164,13 @@ require('lazy').setup({
         },
       }
 
-      -- Statusline
+      -- -- Statusline
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
     end,
   },
 
@@ -182,6 +187,7 @@ require('lazy').setup({
   { -- Git stuff in gutter
     'lewis6991/gitsigns.nvim',
     opts = {
+      current_line_blame = true,
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -500,7 +506,14 @@ require('lazy').setup({
           end
           return 'make install_jsregexp'
         end)(),
-        dependencies = {},
+        dependencies = {
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
+        },
         opts = {},
       },
       'folke/lazydev.nvim',
