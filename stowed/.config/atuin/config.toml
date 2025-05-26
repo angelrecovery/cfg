@@ -1,4 +1,5 @@
 enter_accept = false
+invert = true
 
 [sync]
 records = true
