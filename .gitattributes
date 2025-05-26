@@ -1,1 +1,6 @@
+# Unix line endings
 * text eol=lf
+
+# Detect these languages
+*.json linguist-detectable=true
+*.yaml linguist-detectable=true
