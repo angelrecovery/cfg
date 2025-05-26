@@ -34,3 +34,5 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 
 vim.opt.clipboard = 'unnamedplus'
+
+vim.cmd 'set laststatus=0'
