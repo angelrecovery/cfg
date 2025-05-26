@@ -1,7 +1,6 @@
 theme = Atom
 window-decoration = true
 
-font-family = JetBrainsMono NF
-font-size = 11
+font-size = 16
 
 mouse-hide-while-typing = true
