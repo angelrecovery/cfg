@@ -41,6 +41,7 @@ alias cat="bat --style=plain --theme=base16 --color=always"
 
 # Miscellaneous aliases
 alias g="git"
+alias lg="lazygit"
 alias cl="clear"
 alias ff="fastfetch"
 alias tk="tokei"
