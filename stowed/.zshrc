@@ -19,7 +19,6 @@ else
 fi
 
 plugins=(
-  git
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -41,6 +40,7 @@ alias ls="lsd"
 alias cat="bat --style=plain --theme=base16 --color=always"
 
 # Miscellaneous aliases
+alias g="git"
 alias cl="clear"
 alias ff="fastfetch"
 alias tk="tokei"
