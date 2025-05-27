@@ -1,25 +1,13 @@
+[user]
+	name = lily
+	email = angelrecovery@icloud.com
+	signingkey = 29D7443F0529A8E4C51337576E0C3AE4687CDC21
 [core]
 	editor = nvim
   	excludesfile = ~/.gitexcludes
-[branch]
-	autosetuprebase = always
-[help]
-	autocorrect = 1
 [init]
 	defaultBranch = main
-[alias]
-	st = status
-	sw = switch
-	c = commit -v
-	b = branch
-	a = add
-	re = restore
-	l = pull
-	p = push
-	f = fetch
-	mt = mergetool
-	m = merge
-	r = rebase
-	lg = log --stat
-	d = diff
-	dt = difftool
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
