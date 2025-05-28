@@ -4,10 +4,17 @@
 	signingkey = 29D7443F0529A8E4C51337576E0C3AE4687CDC21
 [core]
 	editor = nvim
-  	excludesfile = ~/.gitexcludes
+	excludesfile = ~/.gitexcludes
 [init]
 	defaultBranch = main
 [commit]
 	gpgsign = true
 [tag]
 	gpgsign = true
+[alias]
+	cl = clone
+	st = status
+	cm = commit -v -m
+	df = diff
+	pl = pull
+	pu = push
