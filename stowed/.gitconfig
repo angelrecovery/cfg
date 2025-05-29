@@ -11,11 +11,19 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[diff]
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft --color=always "$LOCAL" "$REMOTE"
+[pager]
+	difftool = true
 [alias]
 	cl = clone
 	st = status
 	cm = commit -v -m
-	df = diff
+	dt = difftool
 	pl = pull
 	pu = push
 [filter "lfs"]
