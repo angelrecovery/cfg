@@ -14,15 +14,20 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # Install regular software
 brew install \
     ghostty \
+    gnupg \
+    git \
     neovim \
     zoxide \
     atuin \
     ripgrep \
     fd \
+    llvm \
     zig \
     rustup \
-    clang \
+    make \
+    cmake \
     node \
+    go \
     fzf \
     lazygit \
     docker \
@@ -33,3 +38,4 @@ brew install \
     starship \
     htop \
     fastfetch \
+    tree-sitter \
