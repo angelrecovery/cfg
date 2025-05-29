@@ -31,6 +31,7 @@ brew install \
     go \
     fzf \
     lazygit \
+    lazydocker \
     docker \
     bat \
     lsd \
@@ -41,4 +42,5 @@ brew install \
     htop \
     fastfetch \
     tree-sitter \
+
 echo "scripts/bootstrap: done!"
