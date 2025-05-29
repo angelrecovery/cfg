@@ -35,6 +35,7 @@ brew install \
     bat \
     lsd \
     tokei \
+    tlrc \
     speedtest-cli \
     starship \
     htop \
