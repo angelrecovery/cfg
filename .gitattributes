@@ -1,7 +1,7 @@
 # Unix line endings
 * text eol=lf
 
-# Detect these languages/formats
+# Make GitHub linguist detect these
 *.json linguist-detectable=true
 *.toml linguist-detectable=true
-*.yaml linguist-detectable=true
+*.yml linguist-detectable=true
