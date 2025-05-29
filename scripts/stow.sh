@@ -2,4 +2,4 @@
 
 # Stow ~
 stow --target="$HOME" stowed
-echo "[scripts/stow] Done!"
+echo "scripts/stow: done!"
