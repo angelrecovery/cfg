@@ -39,3 +39,4 @@ brew install \
     htop \
     fastfetch \
     tree-sitter \
+echo "scripts/bootstrap: done!"
