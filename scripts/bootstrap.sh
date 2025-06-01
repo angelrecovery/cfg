@@ -16,6 +16,7 @@ brew install \
     ghostty \
     gnupg \
     git \
+    wget \
     difftastic \
     neovim \
     zoxide \
