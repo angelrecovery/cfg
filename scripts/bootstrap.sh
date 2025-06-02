@@ -39,6 +39,7 @@ brew install \
     tokei \
     man \
     tlrc \
+    hexyl \
     monolith \
     speedtest-cli \
     starship \
