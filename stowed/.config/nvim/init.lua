@@ -82,23 +82,37 @@ require('lazy').setup({
     version = false,
     opts = {
       provider = 'claude',
-      gemini = {
-        model = 'gemini-2.5-flash-preview-04-17',
-        timeout = 30000,
-        temperature = 0,
-        max_tokens = 4096,
-      },
-      claude = {
-        model = 'claude-3-5-haiku-latest',
-        timeout = 30000,
-        temperature = 0,
-        max_tokens = 4096,
-      },
-      openai = {
-        model = 'o4-mini',
-        timeout = 30000,
-        temperature = 0,
-        max_tokens = 4096,
+      providers = {
+        gemini = {
+          model = 'gemini-2.5-flash-preview-04-17',
+          timeout = 30000,
+          extra_request_body = {
+            options = {
+              temperature = 0,
+              max_tokens = 4096,
+            },
+          },
+        },
+        claude = {
+          model = 'claude-3-5-haiku-latest',
+          timeout = 30000,
+          extra_request_body = {
+            options = {
+              temperature = 0,
+              max_tokens = 4096,
+            },
+          },
+        },
+        openai = {
+          model = 'o4-mini',
+          timeout = 30000,
+          extra_request_body = {
+            options = {
+              temperature = 0,
+              max_tokens = 4096,
+            },
+          },
+        },
       },
       web_search_engine = {
         provider = 'tavily',
