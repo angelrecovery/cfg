@@ -34,6 +34,7 @@ brew install \
     lazygit \
     lazydocker \
     docker \
+    docker-compose \
     bat \
     lsd \
     tokei \
