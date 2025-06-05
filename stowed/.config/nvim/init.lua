@@ -76,86 +76,6 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  { -- AI
-    'yetone/avante.nvim',
-    event = 'VeryLazy',
-    version = false,
-    opts = {
-      provider = 'claude',
-      providers = {
-        gemini = {
-          model = 'gemini-2.5-flash-preview-04-17',
-          timeout = 30000,
-          extra_request_body = {
-            options = {
-              temperature = 0,
-              max_tokens = 4096,
-            },
-          },
-        },
-        claude = {
-          model = 'claude-3-5-haiku-latest',
-          timeout = 30000,
-          extra_request_body = {
-            options = {
-              temperature = 0,
-              max_tokens = 4096,
-            },
-          },
-        },
-        openai = {
-          model = 'o4-mini',
-          timeout = 30000,
-          extra_request_body = {
-            options = {
-              temperature = 0,
-              max_tokens = 4096,
-            },
-          },
-        },
-      },
-      web_search_engine = {
-        provider = 'tavily',
-      },
-      windows = {
-        width = 25, -- % of the screen width
-      },
-      mappings = {},
-    },
-    build = 'make',
-    dependencies = {
-      -- Required
-      'nvim-treesitter/nvim-treesitter',
-      'stevearc/dressing.nvim',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      -- Optional
-      'nvim-telescope/telescope.nvim',
-      'hrsh7th/nvim-cmp',
-      'nvim-tree/nvim-web-devicons',
-      { -- Support for image pasting
-        'HakonHarnes/img-clip.nvim',
-        event = 'VeryLazy',
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            use_absolute_path = true,
-          },
-        },
-      },
-      { -- Markdown rendering for chats
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { 'markdown', 'Avante' },
-        },
-        ft = { 'markdown', 'Avante' },
-      },
-    },
-  },
 
   { -- Mini
     'echasnovski/mini.nvim',
@@ -224,21 +144,6 @@ require('lazy').setup({
         -- Groups
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
-        { '<leader>a', group = 'AI' },
-        -- AI (Avante)
-        { '<leader>aa', group = 'Ask' },
-        { '<leader>aB', group = 'Add current buffers' },
-        { '<leader>aB', group = 'Add all open buffers' },
-        { '<leader>ad', group = 'Toggle debug' },
-        { '<leader>af', group = 'Focus' },
-        { '<leader>ah', group = 'Select history' },
-        { '<leader>an', group = 'Create new ask' },
-        { '<leader>ar', group = 'Refresh' },
-        { '<leader>aR', group = 'Display repo map' },
-        { '<leader>as', group = 'Toggle suggestions' },
-        { '<leader>aS', group = 'Stop' },
-        { '<leader>at', group = 'Toggle' },
-        { '<leader>a?', group = 'Select model' },
       },
     },
   },
